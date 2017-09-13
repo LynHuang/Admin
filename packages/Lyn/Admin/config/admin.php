@@ -10,12 +10,7 @@ return [
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>Lyn Admin</b>',
-
-    /*
-     * Mini-logo in admin panel header.
-     */
-    'logo-mini' => '<b>LA</b>',
+    'logo' => '<i class="fa fa-leaf"></i>Lyn Admin',
 
     /*
      * Laravel-admin url prefix.
