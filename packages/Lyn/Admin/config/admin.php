@@ -5,17 +5,12 @@ return [
     /*
      * admin name.
      */
-    'name' => '内容分发平台管理后台',
+    'name' => 'Lyn Admin',
 
     /*
      * Logo in admin panel header.
      */
     'logo' => '<i class="fa fa-leaf"></i>Lyn Admin',
-
-    /*
-     * Laravel-admin url prefix.
-     */
-    'prefix' => 'admin',
 
     /*
      * Laravel-admin install directory.
@@ -25,7 +20,7 @@ return [
     /*
      * Laravel-admin html title.
      */
-    'title' => '内容分发平台管理后台',
+    'title' => 'Lyn Admin',
 
     /*
      * Laravel-admin auth setting.
