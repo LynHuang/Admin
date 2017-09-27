@@ -15,7 +15,7 @@ return [
     /*
      * Laravel-admin install directory.
      */
-    'directory' => app_path('Admin'),
+    'directory' => app_path('Http\Admin'),
 
     /*
      * Laravel-admin html title.
@@ -25,10 +25,10 @@ return [
     /*
      * Laravel-admin auth setting.
      */
-    'auth' => [
+    'User' => [
         'driver' => 'session',
         'provider' => '',
-        'model' => Encore\Admin\Auth\Database\Administrator::class,
+        'model' => Lyn\Admin\src\models\User::class,
     ],
 
     /*
@@ -56,19 +56,19 @@ return [
 
         // User tables and model.
         'users_table' => 'admin_users',
-        'users_model' => Encore\Admin\Auth\Database\Administrator::class,
+        'users_model' => Lyn\Admin\src\models\User::class,
 
         // Role table and model.
         'roles_table' => 'admin_roles',
-        'roles_model' => Encore\Admin\Auth\Database\Role::class,
+        'roles_model' => Lyn\Admin\src\models\Role::class,
 
         // Permission table and model.
         'permissions_table' => 'admin_permissions',
-        'permissions_model' => Encore\Admin\Auth\Database\Permission::class,
+        'permissions_model' => Lyn\Admin\src\models\Permission::class,
 
         // Menu table and model.
         'menu_table' => 'admin_menu',
-        'menu_model' => Encore\Admin\Auth\Database\Menu::class,
+        'menu_model' => Lyn\Admin\src\models\Menu::class,
 
         // Pivot table for table above.
         'operation_log_table' => 'admin_operation_log',

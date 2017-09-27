@@ -32,16 +32,7 @@ class CreateAdminTables extends Migration
             $table->timestamps();
         });
 
-        Schema::connection($connection)->create(config('admin.database.operation_log_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('path');
-            $table->string('method', 10);
-            $table->string('ip', 15);
-            $table->text('input');
-            $table->index('user_id');
-            $table->timestamps();
-        });
+
     }
 
     /**
@@ -55,6 +46,5 @@ class CreateAdminTables extends Migration
 
         Schema::connection($connection)->dropIfExists(config('admin.database.menu_table'));
         Schema::connection($connection)->dropIfExists(config('admin.database.role_menu_table'));
-        Schema::connection($connection)->dropIfExists(config('admin.database.operation_log_table'));
     }
 }
