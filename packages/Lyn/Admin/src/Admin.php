@@ -16,6 +16,21 @@ class Admin extends Facade
     }
 
     /**
+     * Get namespace of controllers.
+     *
+     * @return string
+     */
+    public function controllerNamespace()
+    {
+        $directory = config('admin.directory');
+
+        return ltrim(implode('\\',
+                array_map('ucfirst',
+                    explode(DIRECTORY_SEPARATOR, str_replace(app()->basePath(), '', $directory)))), '\\')
+            .'\\Controllers';
+    }
+
+    /**
      * Add css or get all css.
      *
      * @param null $stylesheets
@@ -79,5 +94,34 @@ class Admin extends Facade
     public function logo()
     {
         return config('admin.logo');
+    }
+
+
+    public function registerAuthRoutes()
+    {
+        $attributes = [
+            'prefix'        => config('admin.prefix'),
+            'namespace'     => 'Lyn\Admin\Controllers',
+            'middleware'    => ['web', 'admin'],
+        ];
+
+        Route::group($attributes, function ($router) {
+            $attributes = ['middleware' => 'admin.permission:allow,administrator'];
+
+            /* @var \Illuminate\Routing\Router $router */
+            $router->group($attributes, function ($router) {
+                $router->resource('auth/users', 'UserController');
+                $router->resource('auth/roles', 'RoleController');
+                $router->resource('auth/permissions', 'PermissionController');
+                $router->resource('auth/menu', 'MenuController', ['except' => ['create']]);
+                $router->resource('auth/logs', 'LogController', ['only' => ['index', 'destroy']]);
+            });
+
+            $router->get('auth/login', 'AuthController@getLogin');
+            $router->post('auth/login', 'AuthController@postLogin');
+            $router->get('auth/logout', 'AuthController@getLogout');
+            $router->get('auth/setting', 'AuthController@getSetting');
+            $router->put('auth/setting', 'AuthController@putSetting');
+        });
     }
 }

@@ -15,7 +15,7 @@ return [
     /*
      * Laravel-admin install directory.
      */
-    'directory' => app_path('Http\Admin'),
+    'directory' => app_path('Http\Controllers\Admin'),
 
     /*
      * Laravel-admin html title.
@@ -28,23 +28,9 @@ return [
     'User' => [
         'driver' => 'session',
         'provider' => '',
-        'model' => Lyn\Admin\src\models\User::class,
+        'model' => Lyn\Admin\src\models\AdminUser::class,
     ],
 
-    /*
-     * Laravel-admin upload setting.
-     */
-    'upload' => [
-
-        'disk' => 'oss',
-
-        'directory' => [
-            'image' => 'content-distribution-platform/images/' . date('Y-m'),
-            'file' => 'content-distribution-platform/videos/' . date('Y-m'),
-        ],
-
-        'host' => 'http://static.zookingsoft.com',
-    ],
 
     /*
      * Laravel-admin database setting.
@@ -56,7 +42,7 @@ return [
 
         // User tables and model.
         'users_table' => 'admin_users',
-        'users_model' => Lyn\Admin\src\models\User::class,
+        'users_model' => Lyn\Admin\src\models\AdminUser::class,
 
         // Role table and model.
         'roles_table' => 'admin_roles',
@@ -77,34 +63,6 @@ return [
         'role_permissions_table' => 'admin_role_permissions',
         'role_menu_table' => 'admin_role_menu',
     ],
-
-    /*
-     * By setting this option to open or close operation log in laravel-admin.
-     */
-    'operation_log' => true,
-
-    /*
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-     */
-    'skin' => 'skin-blue',
-
-    /*
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-     */
-    'layout' => ['sidebar-mini'],
 
     /*
      * Version displayed in footer.

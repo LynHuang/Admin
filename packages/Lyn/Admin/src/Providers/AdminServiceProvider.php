@@ -3,6 +3,7 @@
 namespace Lyn\Admin;
 
 use Illuminate\Support\ServiceProvider;
+use Lyn\Admin\Admin;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,14 @@ class AdminServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../views', 'admin');
+        if (!$this->app->routesAreCached()) {
+            require __DIR__ . '/../Routes/admin.php';
+        }
+
         $this->publishes([
             __DIR__ . '/../views' => base_path('resources/views/admin'),
+            __DIR__ . '/../Controllers' => config('admin.directory'),
+            __DIR__ . '/../Routes/admin.php' => base_path('routes/admin.php')
         ]);
     }
 
