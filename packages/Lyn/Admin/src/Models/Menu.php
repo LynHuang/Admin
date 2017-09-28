@@ -1,5 +1,6 @@
 <?php
-namespace Lyn\Admin\models;
+
+namespace Lyn\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,5 +26,16 @@ class Menu extends Model
         $relatedModel = config('admin.database.roles_model');
 
         return $this->belongsToMany($relatedModel, $pivotTable, 'role_id', 'menu_id');
+    }
+
+    /**
+     * @return array
+     */
+    public function allNodes()
+    {
+        $orderColumn = DB::getQueryGrammar()->wrap($this->orderColumn);
+        $byOrder = $orderColumn.' = 0,'.$orderColumn;
+
+        return static::with('roles')->orderByRaw($byOrder)->get()->toArray();
     }
 }

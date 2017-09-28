@@ -1,6 +1,6 @@
 <?php
 
-namespace Lyn\Admin\models;
+namespace Lyn\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

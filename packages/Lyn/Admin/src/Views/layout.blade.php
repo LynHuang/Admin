@@ -227,7 +227,7 @@
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                        <img src="{{ Auth::user()->getAvatar() }}" class="msg-photo"/>
                                         <span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span>
