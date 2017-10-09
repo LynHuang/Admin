@@ -20,7 +20,7 @@ class Admin extends Facade
      *
      * @return string
      */
-    public function controllerNamespace()
+    public static function controllerNamespace()
     {
         $directory = config('admin.directory');
 
@@ -97,7 +97,7 @@ class Admin extends Facade
     }
 
 
-    public function registerAuthRoutes()
+    public  function registerAuthRoutes()
     {
         $attributes = [
             'prefix'        => config('admin.prefix'),
