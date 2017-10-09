@@ -31,7 +31,6 @@ return [
         'model' => Lyn\Admin\src\models\AdminUser::class,
     ],
 
-
     /*
      * Laravel-admin database setting.
      */
